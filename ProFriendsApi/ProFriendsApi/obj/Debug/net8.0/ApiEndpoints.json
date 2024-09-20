@@ -1,0 +1,79 @@
+[
+  {
+    "ContainingType": "ProFriendsApi.Controllers.ProFriendsAPIController",
+    "Method": "Create",
+    "RelativePath": "api/ProFriendsAPI/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "proFriendsAPI",
+        "Type": "ProFriendsApi.Models.ProFriendsAPI",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 201
+      }
+    ]
+  },
+  {
+    "ContainingType": "ProFriendsApi.Controllers.ProFriendsAPIController",
+    "Method": "Get",
+    "RelativePath": "api/ProFriendsAPI/Get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ProFriendsApi.Models.ProFriendsAPI, ProFriendsApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ProFriendsApi.Controllers.ProFriendsAPIController",
+    "Method": "GetBySellingPrice",
+    "RelativePath": "api/ProFriendsAPI/GetBySellingPrice/SellingPrice",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "SellingPrice",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ProFriendsApi.Models.ProFriendsAPI",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  }
+]

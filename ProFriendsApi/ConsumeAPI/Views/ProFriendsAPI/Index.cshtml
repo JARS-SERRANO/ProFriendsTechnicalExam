@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ConsumeAPI.Models.ProFriendsAPIViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessingFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquityTerm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanTerm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterestRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Insurance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            DateOnly dtDueDate = item.ReservationDate;
+            Double dTotalPackagePrice = (Convert.ToDouble(item.SellingPrice) + Convert.ToDouble(item.ProcessingFee));
+            Double dEquity = dTotalPackagePrice * 0.125;
+            Double OB1 = dTotalPackagePrice - Convert.ToDouble(item.ReservationFee);
+            Double dEquityOB = 0;
+            Double iCount = Convert.ToDouble(item.EquityTerm);
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => "1")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationFee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => OB1)
+                </td>
+            </tr>
+
+            for(int i = 1; i < iCount; i++)
+            {
+                dtDueDate.AddMonths(1);
+                dEquity = dTotalPackagePrice * 0.125;
+                dEquityOB = OB1 - dEquity;
+                OB1 = dEquityOB;
+
+                <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => iCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => dtDueDate.ToString("MM/dd/yyyy"))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => dEquity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => dEquityOB)
+                </td>
+                </tr>
+
+            }
+}
+    </tbody>
+</table>

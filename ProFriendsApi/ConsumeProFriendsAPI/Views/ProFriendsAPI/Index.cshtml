@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ConsumeProFriendsAPI.Models.ProFriendsAPIViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessingFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquityTerm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanTerm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterestRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Insurance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellingPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcessingFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquityTerm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanTerm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterestRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Insurance)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+select
+	A.CustomerNo,
+	B.UnitID,
+	B.LastName,
+	B.FirstName,
+	B.MiddleName,
+	A.EquityTerm,
+	format(A.EquityAmount, '#,##0.00') as EquityAmount,
+	A.MATerm,
+	format(A.MAAmount, '#,##0.00') as MAAmount,
+	A.MIR,
+	A.FIRE,
+	format(A.LoanAmt, '#,##0.00') as LoanAmt,
+	A.IntRate,
+	CASE WHEN C.Type = 'Lot Only' THEN format(C.LotPrice, '#,##0.00') else format(C.HousePrice, '#,##0.00') END  AS SellingPrice
+		from CustomerDtl A left join CustomerTbl B on A.CustomerNo = B.CustomerNo left join InventoryTbl C on B.UnitID = C.UnitID;
+		
+go
+
+update CustomerDtl set IntRate = '21' where CustomerNo = '739662';
+go
+
+delete from customertbl where UnitId in (select unitID from InventoryTbl where LotPrice < 999999);
+go
